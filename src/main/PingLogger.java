@@ -6,15 +6,18 @@ import logic.Vars;
 import view.Text;
 
 /**
- *  Программа: JavaPingLogger v0.2
+ *  Программа: JavaPingLogger v0.2b
  *  Автор: Сергей Шугаев
  */
 public class PingLogger {
 	
 	public static void main(String[] args) {
-		Ping.addHost("amazon.com");
-		Ping.addHost("google.com");
-		Ping.addHost("yandex.ru");
+		Vars.readArgs(args);
+		if (Vars.isHelpCommand()) {
+			Text.doViewHelp();
+			System.exit(0);
+		}
+		// обычная работа программы
 		Text.view();
 		Logger.begin();
 		loop:

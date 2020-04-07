@@ -5,10 +5,15 @@ import java.io.IOException;
 /** глобальные переменные и функции */
 public class Vars {
 
-	public final static String PROG_VER = "0.2";
+	public final static String PROG_VER = "0.2b";
 	
 	private static long processWait = 15*1000; // 5*60*1000 = 5 минут
 	
+	private static boolean isHelpCommand = false;
+
+	/** надо ли показывать подсказку комманд программы (help) */
+	public static boolean isHelpCommand() { return isHelpCommand; }
+
 	/** время ожидания повтора процесса пинга в миллисекундах */
 	public static long getProcessWait() { return processWait; }
 	
@@ -16,6 +21,32 @@ public class Vars {
 	public static String getWaitInSeconds() {
 		long sec = processWait / 1000;
 		return (sec >= 60) ? sec / 60 + "m" + (sec - (sec / 60 * 60)) + "s" : sec + "s"; 
+	}
+	
+	/** чтение параметров коммандной строки */
+	public static void readArgs(String[] args) {
+		if (args.length > 0) {
+			for (String p : args) {
+				if (p.startsWith("-") | p.startsWith("/")) {
+					// это комманда, а не хост
+					p = p.substring(1).toLowerCase();
+					if (p.startsWith("h") | p.startsWith("?")) { // help
+						isHelpCommand = true;
+					}
+					if (p.startsWith("w:")) { // wait
+						try {
+							processWait = Long.parseLong(p.substring(2)) * 1000; 
+						} catch (NumberFormatException e) {}
+					}
+				} else
+					Ping.addHost(p);
+			}
+		}
+		if (Ping.getHostList().isEmpty()) {
+			Ping.addHost("amazon.com");
+			Ping.addHost("google.com");
+			Ping.addHost("yandex.ru");
+		}
 	}
 	
 	/** задержка в миллисекундах */

@@ -14,6 +14,13 @@ import logic.Vars;
 
 public class Text {
 
+	/** показать справку по программе (help) */
+	public static void doViewHelp() {
+		out.println("Usage: JavaPingLogger [-w:<wait>] [<host>] [<host>]\n\nOptions:");
+		out.printf("%4s %-12s Timeout before re-checking hosts (in seconds).\n", "", "-w:<wait>");
+		out.printf("%4s %-12s The name of the host to be checked.\n", "", "<host>");
+	}
+	
 	/** показать изменения и пинги */
 	public static void view() {
 		if (Logger.getLogFile() == null)

@@ -20,8 +20,6 @@ public class Ping {
 	
 	/** пингуем все добавленные хосты */
 	public static void process() {
-		if (hostList.isEmpty())
-			addHost("google.com");
 		for(PingValue pv : hostList)
 			pv.setPing(InetHostReachable(pv.getHost(), 80, 2000));
 	}

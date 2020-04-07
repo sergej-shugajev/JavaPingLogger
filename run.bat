@@ -1,1 +1,1 @@
-java -jar PingLogger.jar
+java -jar PingLogger.jar %1 %2 %3 %4 %5 %6 %7 %8 %9
