@@ -6,7 +6,7 @@ import logic.Vars;
 import view.Text;
 
 /**
- *  Программа: JavaPingLogger v0.2b
+ *  Программа: JavaPingLogger v0.2c
  *  Автор: Сергей Шугаев
  */
 public class PingLogger {
@@ -27,7 +27,7 @@ public class PingLogger {
 			Text.view();
 			long timeWaitStop = System.currentTimeMillis() + Vars.getProcessWait();
 			// ожидаем нажатия "q" или окончания задержки
-			while (System.currentTimeMillis() < timeWaitStop) {
+			while (System.currentTimeMillis() <= timeWaitStop) {
 				if (Vars.isKeyQuitPressed())
 					break loop;
 				Vars.sleep(200);
