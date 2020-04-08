@@ -5,7 +5,7 @@ import java.io.IOException;
 /** глобальные переменные и функции */
 public class Vars {
 
-	public final static String PROG_VER = "0.2b";
+	public final static String PROG_VER = "0.2d";
 	
 	private static long processWait = 15*1000; // 5*60*1000 = 5 минут
 	

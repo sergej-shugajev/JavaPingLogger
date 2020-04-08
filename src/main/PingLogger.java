@@ -6,7 +6,7 @@ import logic.Vars;
 import view.Text;
 
 /**
- *  Программа: JavaPingLogger v0.2c
+ *  Программа: JavaPingLogger v0.2d
  *  Автор: Сергей Шугаев
  */
 public class PingLogger {
