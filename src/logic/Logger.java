@@ -26,16 +26,22 @@ public class Logger {
 	/** инициализация переменных */
 	public static void init() {
 		rowsInLog = 0;
-		dateTimeStart = LocalDateTime.now();
-		logFile = "ping_" 
-				+ dateTimeStart.format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"))
-				+ ".csv";
+		if (Vars.isCheckOnlyCommand())
+			logFile = "<check only>";
+		else {
+			dateTimeStart = LocalDateTime.now();
+			logFile = "ping_" 
+					+ dateTimeStart.format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"))
+					+ ".csv";
+		}
 	}
 	
 	/** начало записи в лог (создание файла и шапка) */
 	public static void begin() {
 		if (logFile == null)
 			init();
+		if (Vars.isCheckOnlyCommand())
+			return;
 		try (FileWriter fw = new FileWriter(logFile, false)) {
 			fw.write(LOG_COLS_NAMES);
 			fw.flush();
@@ -46,6 +52,8 @@ public class Logger {
 
 	/** сохранение всех хостов в лог */
 	public static void saveAllPings() {
+		if (Vars.isCheckOnlyCommand())
+			return;
 		if (rowsInLog == 0)
 			begin();
 		try (FileWriter fw = new FileWriter(logFile, true)) {

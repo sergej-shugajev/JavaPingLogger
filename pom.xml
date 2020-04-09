@@ -6,7 +6,7 @@
 	
 	<groupId>com.shugajev</groupId>
 	<artifactId>PingLogger</artifactId>
-	<version>0.2d</version>
+	<version>0.2e</version>
 	
 	<properties>
 		<source>1.8</source>

@@ -5,15 +5,19 @@ import java.io.IOException;
 /** глобальные переменные и функции */
 public class Vars {
 
-	public final static String PROG_VER = "0.2d";
+	public final static String PROG_VER = "0.2e";
 	
 	private static long processWait = 15*1000; // 5*60*1000 = 5 минут
 	
 	private static boolean isHelpCommand = false;
-
+	private static boolean isCheckOnlyCommand = false;
+	
 	/** надо ли показывать подсказку комманд программы (help) */
 	public static boolean isHelpCommand() { return isHelpCommand; }
-
+	
+	/** только проверка хостов без записи в лог (check) */
+	public static boolean isCheckOnlyCommand() { return isCheckOnlyCommand; }
+	
 	/** время ожидания повтора процесса пинга в миллисекундах */
 	public static long getProcessWait() { return processWait; }
 	
@@ -32,6 +36,9 @@ public class Vars {
 					p = p.substring(1).toLowerCase();
 					if (p.startsWith("h") | p.startsWith("?")) { // help
 						isHelpCommand = true;
+					}
+					if (p.startsWith("c")) { // check
+						isCheckOnlyCommand = true;
 					}
 					if (p.startsWith("w:")) { // wait
 						try {

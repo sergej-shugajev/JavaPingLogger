@@ -6,13 +6,17 @@ import logic.Vars;
 import view.Text;
 
 /**
- *  Программа: JavaPingLogger v0.2d
- *  Автор: Сергей Шугаев
+ *  JavaPingLogger
+ *   - Программа для проверки сайтов на соединение с логированием. 
+ *  @version v0.2e
+ *  @author Sergej Shugajev
  */
 public class PingLogger {
 	
 	public static void main(String[] args) {
 		Vars.readArgs(args);
+//		Vars.readArgs(new String[] {"/w:0", "google.com", "google.com", "google.com"});
+//		Vars.readArgs(new String[] {"/c", "/w:1", "google.com", "yandex.ru"});
 		if (Vars.isHelpCommand()) {
 			Text.doViewHelp();
 			System.exit(0);

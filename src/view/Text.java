@@ -16,7 +16,8 @@ public class Text {
 
 	/** показать справку по программе (help) */
 	public static void doViewHelp() {
-		out.println("Usage: JavaPingLogger [-w:<wait>] [<host>] [<host>]\n\nOptions:");
+		out.println("Usage: JavaPingLogger [-c] [-w:<wait>] [<host>] [<host>]\n\nOptions:");
+		out.printf("%4s %-12s Checking hosts without logging.\n", "", "-c");
 		out.printf("%4s %-12s Timeout before re-checking hosts (in seconds).\n", "", "-w:<wait>");
 		out.printf("%4s %-12s The name of the host to be checked.\n", "", "<host>");
 	}

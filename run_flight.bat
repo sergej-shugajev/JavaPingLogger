@@ -1,1 +1,1 @@
-java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=duration=200s,filename=flight.jfr -jar PingLogger.jar -w:0 google.com google.com google.com google.com google.com
+java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -XX:StartFlightRecording=duration=600s,filename=flight.jfr -jar PingLogger.jar -w:0 google.com google.com google.com google.com google.com
