@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>com.shugajev</groupId>
-	<artifactId>JavaPingLogger</artifactId>
-	<version>0.2e</version>
-	
-	<name>JavaPingLogger</name>
-	<url>https://github.com/sergej-shugajev/JavaPingLogger</url>
-	<description>Программа для проверки сайтов на соединение с логированием.</description>
-	
-	<properties>
-		<java.version>1.8</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
-	<build>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>com.shugajev</groupId>
+    <artifactId>JavaPingLogger</artifactId>
+    <version>0.3</version>
+    <packaging>jar</packaging>
+    
+    <name>JavaPingLogger</name>
+    <url>https://github.com/sergej-shugajev/JavaPingLogger</url>
+    <description>Программа для проверки сайтов на соединение с логированием.</description>
+    
+    <properties>
+        <jdkVersion>1.8</jdkVersion>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <build>
     <sourceDirectory>${basedir}/src</sourceDirectory>
     <finalName>${artifactId}-${version}</finalName>
-	
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.3</version>
-			<configuration>
-				<source>${java.version}</source>
-				<target>${java.version}</target>
-			</configuration>			
-		</plugin>
-		<plugin>
-			<artifactId>maven-assembly-plugin</artifactId>
-			<configuration>
-			<descriptorRefs>
-				<descriptorRef>jar-with-dependencies</descriptorRef>
-			</descriptorRefs>
-			<outputDirectory>${basedir}</outputDirectory>
-			<finalName>PingLogger</finalName>
-			<appendAssemblyId>false</appendAssemblyId>
-			<archive>
-			<manifest>
-				<mainClass>main.PingLogger</mainClass>
-			</manifest>
-			</archive>
-			</configuration>
-		</plugin>
-	</plugins>
-	</build>
+    
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.3</version>
+            <configuration>
+                <source>${jdkVersion}</source>
+                <target>${jdkVersion}</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+            <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+            <outputDirectory>${basedir}</outputDirectory>
+            <finalName>PingLogger</finalName>
+            <appendAssemblyId>false</appendAssemblyId>
+            <archive>
+            <manifest>
+                <mainClass>main.PingLogger</mainClass>
+            </manifest>
+            </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+    </build>
+    
 </project>
