@@ -6,16 +6,20 @@
     
     <groupId>com.shugajev</groupId>
     <artifactId>JavaPingLogger</artifactId>
-    <version>0.3</version>
+    <version>0.3.0</version>
     <packaging>jar</packaging>
     
     <name>JavaPingLogger</name>
     <url>https://github.com/sergej-shugajev/JavaPingLogger</url>
-    <description>Программа для проверки сайтов на соединение с логированием.</description>
+    <description>Program for checking sites for connection with logging.</description>
     
     <properties>
         <jdkVersion>1.8</jdkVersion>
+        <exeFileName>PingLogger</exeFileName>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <product.title>${name}</product.title>
+        <product.company>Sergej Shugajev</product.company>
+        <product.year>2020</product.year>
     </properties>
     
     <build>
@@ -48,6 +52,50 @@
             </archive>
             </configuration>
         </plugin>
+    
+    <plugin>
+    <groupId>com.akathist.maven.plugins.launch4j</groupId>
+    <artifactId>launch4j-maven-plugin</artifactId>
+    <version>1.7.25</version>
+    <executions>
+        <execution>
+            <id>l4j-clui</id>
+            <phase>package</phase>
+            <goals>
+                <goal>launch4j</goal>
+            </goals>
+            <configuration>
+                <headerType>console</headerType><!-- gui | console -->
+                <outfile>${exeFileName}.exe</outfile>
+                <jar>target/${project.build.finalName}.jar</jar>
+                <errTitle>${product.title}</errTitle>
+                <supportUrl>${url}</supportUrl>
+                <!-- <icon>favicon.ico</icon> -->
+                <classPath>
+                    <mainClass>main.PingLogger</mainClass>
+                    <addDependencies>true</addDependencies>
+                    <preCp>anything</preCp>
+                </classPath>
+                <jre>
+                    <minVersion>${jdkVersion}.0</minVersion>
+                </jre>
+                <versionInfo>
+                    <fileVersion>${project.version}.0</fileVersion>
+                    <txtFileVersion>v${project.version}</txtFileVersion>
+                    <fileDescription>${description}</fileDescription>
+                    <copyright>Copyright © ${product.year} ${product.company}</copyright>
+                    <productVersion>${project.version}.0</productVersion>
+                    <txtProductVersion>v${project.version}</txtProductVersion>
+                    <companyName>${product.company}</companyName>
+                    <productName>${product.title}</productName>
+                    <internalName>${exeFileName}</internalName>
+                    <originalFilename>${exeFileName}.exe</originalFilename>
+                </versionInfo>
+            </configuration>
+        </execution>
+    </executions>
+    </plugin>
+    
     </plugins>
     </build>
     
