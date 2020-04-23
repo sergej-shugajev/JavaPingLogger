@@ -52,6 +52,7 @@ public class Text {
     /** создаем текстовую диаграмму */
     static String[] createTextDiagram(int rows) {
         String[] strRet = new String[rows];
+        // проверки на малое количество строк
         if (rows < 3) {
             if (rows > 0) strRet[0] = "";
             if (rows > 1) strRet[1] = "";
@@ -99,7 +100,7 @@ public class Text {
                 } else {
                     sbLine.append('-');
                     if (i == 0 && TimeLine.getHowDeleted() > 0) {
-                        // обработка случая, когда время слева образано
+                        // обработка случая, когда время слева обрезано
                         sbTime.append(Vars.spaces(TIME_STR_LEN - step_mod));
                     }
                     if (step_mod >= TIME_STR_LEN)
@@ -112,15 +113,6 @@ public class Text {
         }
         strRet[rows-2] = String.format("      |%39.39s|", sbLine.toString());        
         strRet[rows-1] = String.format("       %39.39s", sbTime.toString());
-        
-//        int timeListSize = TimeLine.getSize();
-//        strRet[rows-2] = String.format("      |----------|--------|--------|----------|");
-//        strRet[rows-1] = String.format("    %5s      %5s    %5s    %5s   %5s",
-//                (timeListSize >= 39) ? TimeLine.get(timeListSize-39).getTimeFormatted() : "",
-//                (timeListSize >= 29) ? TimeLine.get(timeListSize-29).getTimeFormatted() : "",
-//                (timeListSize >= 20) ? TimeLine.get(timeListSize-20).getTimeFormatted() : "",
-//                (timeListSize >= 11) ? TimeLine.get(timeListSize-11).getTimeFormatted() : "",
-//                (timeListSize > 0) ? TimeLine.getList().getLast().getTimeFormatted() : "");
         return strRet;
     }
     
