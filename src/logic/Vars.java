@@ -5,9 +5,9 @@ import java.io.IOException;
 /** глобальные переменные и функции */
 public class Vars {
 
-    public final static String PROG_VER = "0.3";
+    public final static String PROG_VER = "0.3.1";
     
-    private static long processWait = 15*1000; // 5*60*1000 = 5 минут
+    private static long processWait = 15*1000; // 15 секунд
     
     private static boolean isHelpCommand = false;
     private static boolean isCheckOnlyCommand = false;
@@ -87,7 +87,7 @@ public class Vars {
         StringBuilder sb = new StringBuilder(len).append(c);
         int remnant = len - sb.length();
         while (remnant > 0) {
-            if (remnant >= sb.length())    sb.append(sb);
+            if (remnant >= sb.length()) sb.append(sb);
             else sb.append(sb.subSequence(0, remnant));
             remnant = len - sb.length();
         }
