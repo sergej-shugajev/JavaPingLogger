@@ -9,8 +9,8 @@ import java.util.ArrayList;
 /** главный пингонатор */
 public class Ping {
 
-    static ArrayList<PingValue> hostList = new ArrayList<>();
-    
+	private static ArrayList<PingValue> hostList = new ArrayList<>();
+	
     /** список всех пингуемых хостов */
     public static ArrayList<PingValue> getHostList() { return hostList; }
     
@@ -22,7 +22,7 @@ public class Ping {
     /** пингуем все добавленные хосты */
     public static void process() {
         for(PingValue pv : hostList)
-            pv.setPing(InetHostReachable(pv.getHost(), 80, 2000));
+            pv.setPing(InetHostReachable(pv.getHost(), Vars.getConnectPort(), 2000));
     }
     
     /** пингуем хост по порту, возвращает время ответа,

@@ -5,12 +5,14 @@ import java.io.IOException;
 /** глобальные переменные и функции */
 public class Vars {
 
-    public final static String PROG_VER = "0.3.1";
+    public final static String PROG_VER = "0.3.2";
     
     private static long processWait = 15*1000; // 15 секунд
     
     private static boolean isHelpCommand = false;
     private static boolean isCheckOnlyCommand = false;
+    
+    private static int connectPort = 80;
     
     /** надо ли показывать подсказку комманд программы (help) */
     public static boolean isHelpCommand() { return isHelpCommand; }
@@ -20,6 +22,9 @@ public class Vars {
     
     /** время ожидания повтора процесса пинга в миллисекундах */
     public static long getProcessWait() { return processWait; }
+    
+    /** порт для проверки подключения к соккету (80 http) */
+    public static int getConnectPort() { return connectPort; }
     
     /** время ожидания повтора процесса пинга в секундах (строка) */
     public static String getWaitInSeconds() {
@@ -39,6 +44,11 @@ public class Vars {
                     }
                     if (p.startsWith("c")) { // check
                         isCheckOnlyCommand = true;
+                    }
+                    if (p.startsWith("p:")) { // port
+                        try {
+                        	connectPort = Integer.parseInt(p.substring(2)); 
+                        } catch (NumberFormatException e) {}
                     }
                     if (p.startsWith("w:")) { // wait
                         try {
