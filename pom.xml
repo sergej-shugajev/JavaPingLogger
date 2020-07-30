@@ -6,7 +6,7 @@
     
     <groupId>com.shugajev</groupId>
     <artifactId>JavaPingLogger</artifactId>
-    <version>0.3.1</version>
+    <version>0.3.2</version>
     <packaging>jar</packaging>
     
     <name>JavaPingLogger</name>
@@ -80,6 +80,7 @@
                     </classPath>
                     <jre>
                         <minVersion>${jdkVersion}.0</minVersion>
+						<path>%USERPROFILE%\.openjdk-jre</path><!-- for portable JRE -->
                     </jre>
                     <versionInfo>
                         <fileVersion>${project.version}.0</fileVersion>
