@@ -57,10 +57,13 @@ public class Logger {
         if (rowsInLog == 0)
             begin();
         try (FileWriter fw = new FileWriter(logFile, true)) {
+        	int indexList = 0;
             for(PingValue pv : Ping.getHostList()) {
+            	int ping = (pv.getPing() >= 0) ? pv.getPing() : pv.getPing() - indexList; // делаем еще отрицательней
                 fw.write(pv.getHost() + ";"
                         + pv.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) + ";"
-                        + pv.getPing() + "\n");
+                        + ping  + "\n");
+                indexList++;
                 rowsInLog++;
             }
             fw.flush();
